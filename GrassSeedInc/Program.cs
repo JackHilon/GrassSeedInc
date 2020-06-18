@@ -11,6 +11,7 @@ namespace GrassSeedInc
             // https://open.kattis.com/problems/grassseed 
 
             // I get: Time Limit Exceeded !!!!!
+            // ,but it is accepted in the simple way (without exception handling)
 
 
             var CostOfOneSqMetreOfLawn = EnterDoubleNum();
@@ -38,58 +39,25 @@ namespace GrassSeedInc
         }
         private static double EnterLine()
         {
-            string[] arr = new string[] { "", "" };
             double[] ans = new double[2]{ 0, 0};
-            double area = 0;
-            try
-            {
-                arr = Console.ReadLine().Split(' ', 2);
+            
+                string[] arr = Console.ReadLine().Split(' ', 2);
                 for (int i = 0; i < arr.Length; i++)
                 {
                     ans[i] = double.Parse(arr[i]);
                 }
-                if (ans[0] < 0 || ans[0] > 100 || ans[1] < 0 || ans[1] > 100)
-                    throw new ArgumentException();
-                area = ans[0] * ans[1];
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.GetType().ToString() + " || " + ex.Message);
-                return EnterLine();
-            }
-            return area;
+            
+            return ans[0] * ans[1]; ;
         }
 
         private static int EnterIntNum()
         {
-            int a = 0;
-            try
-            {
-                a = int.Parse(Console.ReadLine());
-                if (a <= 0 || a > 100)
-                    throw new ArgumentException();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().ToString()+" || "+ex.Message);
-                return EnterIntNum();
-            }
+            int a =  int.Parse(Console.ReadLine());
             return a;
         }
         private static double EnterDoubleNum()
         {
-            double a = 0;
-            try
-            {
-                a = double.Parse(Console.ReadLine());
-                if (a <= 0 || a > 100)
-                    throw new ArgumentException();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().ToString() + " || " + ex.Message);
-                return EnterDoubleNum();
-            }
+            double a = double.Parse(Console.ReadLine());
             return a;
         }
     }
